@@ -2,7 +2,11 @@ name: Node.js CI
 
 on:
   push:
-
+  
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+  
 jobs:
   build:
     runs-on: windows-latest
@@ -20,12 +24,16 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-
-    - run: |
+    - shell: bash
+      run: |
         npm install -g yo
         npm install -g generator-${{ matrix.template }} && \
         yo ${{ matrix.template }}
-    
+        
+    - shell: bash
+      run: |
+        ls -R
+        
     # - shell: cmd
     #   run: |
     #     cd  &&^
