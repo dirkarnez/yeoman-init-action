@@ -26,9 +26,10 @@ jobs:
 
     - shell: bash
       run: |
-        npm install -g yo
+        npm install -g yo && \
         npm install -g generator-${{ matrix.template }} && \
-        yo ${{ matrix.template }}
+        yo --generators && \
+        yo ${{ matrix.template }}:app
         
     - shell: bash
       run: |
