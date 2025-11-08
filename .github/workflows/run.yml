@@ -29,6 +29,8 @@ jobs:
         npm install -g yo && \
         npm install -g generator-${{ matrix.template }} && \
         yo --generators && \
+        mkdir -pv my-app && \
+        cd my-app && \
         yo ${{ matrix.template }}:app
         
     - shell: bash
