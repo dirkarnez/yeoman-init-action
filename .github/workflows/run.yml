@@ -27,12 +27,35 @@ jobs:
     - shell: bash
       run: |
         npm install -g yo && \
+        npm install -g yeoman-test && \
         npm install -g generator-${{ matrix.template }} && \
-        yo --generators && \
-        mkdir -pv my-app && \
-        cd my-app && \
-        yo ${{ matrix.template }}:app
+        yo --generators
         
+    # && \
+    # mkdir -pv my-app && \
+    # cd my-app && \
+    # yo ${{ matrix.template }}:app
+
+    - uses: actions/github-script@v7.0.1
+      with:
+        script: |
+          (async function () {
+            const { helpers } = await import("yeoman-test");
+            
+            await helpers.run(                   // instantiates RunContext
+                    '${{ matrix.template }}:app',             // namespace or generator
+                    {},                      // test options
+                    {}                       // environment options
+                  )
+                      .withAnswers({
+                  ProjectName: "test-application",
+                  ProjectNamePretty: "Test C++ Application",
+                  ProjectDescription: "Dummy description for the application",
+                  ProjectWebPage: "http://example.com",
+                  ProjectMaintainersEmail: "tester@testerenko.com",
+                });
+          })();
+
     - shell: bash
       run: |
         ls -R
