@@ -16,7 +16,7 @@ jobs:
         template:
         - {
             name: "cpp-github",
-            prompt-answer:
+            answer:
             - {
                 ProjectName: "test-application",
                 ProjectNamePretty: "Test C++ Application",
@@ -39,7 +39,7 @@ jobs:
     - shell: bash
       run: |
         cat << EOF > prompt-answer.json
-        ${{ toJSON(matrix.template.prompt-answer) }}
+        ${{ toJSON(matrix.template.answer) }}
         EOF
       
     - shell: bash
