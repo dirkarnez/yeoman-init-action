@@ -1,15 +1,25 @@
-// import * as t from  "yeoman-test";
-// import path from "node:path";
+import * as t from  "yeoman-test";
+import * as e from  "yeoman-environment";
+import fs from "node:fs";
 
-(async function () {
-      const { YeomanTest } = await import("yeoman-test");
-      const yeomanTest = new YeomanTest().create("cpp-github:app", {}, {}).withAnswers({
+const env = e.createEnv();
+
+env.lookup()
+.then((app) => {
+    console.log(JSON.stringify(app));
+    fs.mkdirSync("dist");
+    t.default.create(app.find(a => a.namespace == "cpp-github:app").resolved, {cwd: "dist"}, {})
+    .withAnswers({
         ProjectName: "test-application",
         ProjectNamePretty: "Test C++ Application",
         ProjectDescription: "Dummy description for the application",
         ProjectWebPage: "http://example.com",
         ProjectMaintainersEmail: "tester@testerenko.com",
-      });
-      await yeomanTest.run();
+    })
+    .then((a) => {
+        console.log("done");
+    })
+});
 
-})();
+
+
