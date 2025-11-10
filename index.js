@@ -3,7 +3,7 @@
 
 (async function () {
       const { YeomanTest } = await import("yeoman-test");
-      const yeomanTest = new YeomanTest().create("cpp-github", {}, {}).withAnswers({
+      const yeomanTest = new YeomanTest().create("cpp-github:app", {}, {}).withAnswers({
         ProjectName: "test-application",
         ProjectNamePretty: "Test C++ Application",
         ProjectDescription: "Dummy description for the application",
@@ -11,4 +11,5 @@
         ProjectMaintainersEmail: "tester@testerenko.com",
       });
       await yeomanTest.run();
+
 })();
