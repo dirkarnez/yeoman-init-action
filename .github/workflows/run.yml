@@ -17,13 +17,11 @@ jobs:
         - {
             name: "cpp-github",
             answer:
-            - {
-                ProjectName: "test-application",
-                ProjectNamePretty: "Test C++ Application",
-                ProjectDescription: "Dummy description for the application",
-                ProjectWebPage: "http://example.com",
-                ProjectMaintainersEmail: "tester@testerenko.com"
-              }
+              ProjectName: "test-application",
+              ProjectNamePretty: "Test C++ Application",
+              ProjectDescription: "Dummy description for the application",
+              ProjectWebPage: "http://example.com",
+              ProjectMaintainersEmail: "tester@testerenko.com"
           }
         # https://github.com/vvvar/generator-cpp-github
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
