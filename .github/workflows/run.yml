@@ -34,9 +34,9 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         
-    - name: Dump GitHub context
+    - shell: bash
       run: |
-        cat << 'EOF'
+        cat << EOF > prompt-answer.json
         ${{ toJSON(matrix.template.prompt-answer) }}
         EOF
       
