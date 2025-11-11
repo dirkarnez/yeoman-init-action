@@ -1,7 +1,7 @@
 {
-    "ProjectName": "test-application"
-    "ProjectNamePretty": "Test C++ Application"
-    "ProjectDescription": "Dummy description for the application"
-    "ProjectWebPage": "http://example.com"
+    "ProjectName": "test-application",
+    "ProjectNamePretty": "Test C++ Application",
+    "ProjectDescription": "Dummy description for the application",
+    "ProjectWebPage": "http://example.com",
     "ProjectMaintainersEmail": "tester@testerenko.com"
 }
