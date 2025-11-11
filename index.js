@@ -15,14 +15,15 @@ env.lookup()
         ProjectMaintainersEmail: "tester@testerenko.com",
     }
     */
-    const answers = JSON.parse(fs.readFileSync('./prompt-answer.json', 'utf8'))
+    const input = JSON.parse(fs.readFileSync('./input.json', 'utf8'))
     fs.mkdirSync("dist");
-    t.default.create(app.find(a => a.namespace == "cpp-github:app").resolved, {cwd: "dist"}, {})
-    .withAnswers(answers)
+    t.default.create(app.find(a => a.namespace == input[0].template).resolved, {cwd: "dist"}, {})
+    .withAnswers(input[0].answers)
     .then((a) => {
         console.log("done");
     })
 });
+
 
 
 
